@@ -1,0 +1,23 @@
+[
+    {
+        "titulo": "Ley de OHM",
+	    "descripcion": "Ingrese para averiguar corriente, voltaje o resistencia de un circuito basico.",
+        "imagen": "ley_ohm.jpg"
+    },
+    {
+        "titulo": "Resistencias serie/paralelo",
+	    "descripcion": "Ingrese para averiguar la resistencia serie o paralelo equivalente de un circuito basico.",
+        "imagen": "serie_paralelo.jpg"
+    },
+    {
+        
+        "titulo": "Divisor Resistivo",
+	    "descripcion": "Ingrese para averiguar los datos necesarios para un divisor resistivo basico.",
+        "imagen": "divisor.jpg"
+    },
+    {
+        "titulo": "Potencia Eléctrica",
+	    "descripcion": "Ingrese para realizar calculos basicos de potencia.",
+        "imagen": "potencia.jpg"
+    }
+]
