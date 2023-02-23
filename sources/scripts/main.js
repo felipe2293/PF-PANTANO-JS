@@ -125,54 +125,60 @@ const cargarMenu = async () => {
     const response = await fetch("menu.json")
     const data = await response.json()
     let menu=document.getElementById("menu")
-    menu.innerHTML=`<div class="row row-cols-2">
-                        <div class="col">
-                        <div class="card card--modifier" style="width: 285px; height: 322px">
-                            <img src="sources/img/${data[0].imagen}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                            <h5 class="card-title">${data[0].titulo}</h5>
-                            <p class="card-text">${data[0].descripcion}</p>
-                            <a href="sources/pages/ohm.html" class="btn btn-primary">Ir</a>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="card card--modifier" style="width: 285px; height: 322px">
-                            <img src="sources/img/${data[1].imagen}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                            <h5 class="card-title">${data[1].titulo}</h5>
-                            <p class="card-text">${data[1].descripcion}</p>
-                            <a href="sources/pages/ser_pal.html" class="btn btn-primary">Ir</a>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col menu--modifier">
-                        <div class="card card--modifier" style="width: 285px; height: 420px">
-                            <img src="sources/img/${data[2].imagen}" class="card-img-top" alt="...">
-                            <div class="card-body" >
-                            <h5 class="card-title">${data[2].titulo}</h5>
-                            <p class="card-text">${data[2].descripcion}</p>
-                            <a href="sources/pages/div.html" class="btn btn-primary">Ir</a>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col menu--modifier">
-                        <div class="card card--modifier" style="width: 285px; height: 420px">
-                            <img src="sources/img/${data[3].imagen}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                            <h5 class="card-title">${data[3].titulo}</h5>
-                            <p class="card-text">${data[3].descripcion}</p>
-                            <a href="sources/pages/pot.html" class="btn btn-primary">Ir</a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>`
+    let t=0
+    for(const datos of data){
+        t++
+        let menu_nuevo=document.createElement("div")
+        menu_nuevo.className="col"
+
+        if(t>2){
+            menu_nuevo.className="col menu--modifier"
+            menu_nuevo.innerHTML=`<div class="card card--modifier" style="width: 285px; height: 420px">
+                                    <img src="sources/img/${datos.imagen}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title">${datos.titulo}</h5>
+                                    <p class="card-text">${datos.descripcion}</p>
+                                    <a href="sources/pages/ohm.html" class="btn btn-primary">Ir</a>
+                                    </div>
+                                </div>`
+            menu.appendChild(menu_nuevo)
+
+        }else{
+            menu_nuevo.innerHTML=`<div class="card card--modifier" style="width: 285px; height: 322px">
+                                    <img src="sources/img/${datos.imagen}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title">${datos.titulo}</h5>
+                                    <p class="card-text">${datos.descripcion}</p>
+                                    <a href="sources/pages/ohm.html" class="btn btn-primary">Ir</a>
+                                    </div>
+                                </div>`
+            menu.appendChild(menu_nuevo)
+        }
+       
+    }
+   
 }
 
 //DOM
+
+//Carga de menu inicio
 let menu=document.getElementById("menu")
+
 if(menu){
-    cargarMenu()
+    let boton_historial=document.getElementById("historial")
+    let loader_titulo=document.getElementById("titulo_loader")
+    let loader=document.getElementById("loader")
+    boton_historial.style.display='none'
+    setTimeout(()=>{
+        cargarMenu()
+    },3000)
+    setTimeout(()=>{
+        loader.style.display='none'
+        loader_titulo.style.display='none'
+        boton_historial.style.display='inline-block'
+    },4000)
+    
+
 }
 
 //Pagina ley de OHM
